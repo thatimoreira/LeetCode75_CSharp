@@ -4,29 +4,31 @@ namespace LeetCode75_CSharp.Tests.ArrayAndStrings;
 
 public class MergeStringsAlternatelyTests
 {
-    [Fact]
-    public void ShouldReturnEmptyString_WhenAllStringsAreEmpty()
+    [Theory]
+    [InlineData("", "")]
+    [InlineData(null, null)]
+    public void ShouldReturnEmptyString_WhenStringsAreEmptyOrNull(string? word1, string? word2)
     {
         // Arrange
         var sb = new MergeStringsAlternately();
 
         // Act
-        var result = sb.MergeAlternately("", "").ToString();
+        var result = sb.MergeAlternately(word1, word2).ToString();
 
         // Assert
         Assert.Equal("", result);
     }
     
-    [Fact]
-    public void ShouldJoinStrings_WhenStringsHaveSameLength()
+    [Theory]
+    [InlineData("s1", "s2", "ss12")]
+    [InlineData("str1", "str2", "ssttrr12")]
+    public void ShouldJoinStrings_WhenStringsHaveSameLength(string word1, string word2, string expected)
     {
-        var word1 = "str1";
-        var word2 = "str2";
         var sb = new MergeStringsAlternately();
         
         var result = sb.MergeAlternately(word1, word2);
         
-        Assert.Equal("ssttrr12", result);
+        Assert.Equal(expected, result);
     }
     
     [Theory]
@@ -39,15 +41,5 @@ public class MergeStringsAlternatelyTests
         var result = sb.MergeAlternately(word1, word2);
         
         Assert.Equal(expected , result);
-    }
-
-    [Fact]
-    public void ShouldFail_WhenAtLeastOneStringIsNull()
-    {
-        var sb = new MergeStringsAlternately();
-        
-        var result = sb.MergeAlternately(null, null);
-        
-        Assert.Equal("" , result);
     }
 }
