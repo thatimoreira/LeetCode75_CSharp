@@ -7,11 +7,6 @@ public class MergeStringsAlternately
     public string MergeAlternately(string word1, string word2)
     {
         var wordsJoined = new StringBuilder();
-        
-        // constraints guarantee non-null strings, but handling defensively
-        word1 ??= string.Empty;
-        word2 ??= string.Empty;
-        
         var word1Length = word1.Length;
         var word2Length = word2.Length;
         var maxLength = Math.Max(word1Length, word2Length);
