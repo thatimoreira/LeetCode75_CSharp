@@ -1,5 +1,14 @@
-bin/
-obj/
-/packages/
+# IDE - Rider/JetBrains
+.idea/
 riderModule.iml
 /_ReSharper.Caches/
+
+# User specific
+*.user
+
+# Build outputs
+[Bb]in/
+[Oo]bj/
+
+# Nuget
+/packages/
