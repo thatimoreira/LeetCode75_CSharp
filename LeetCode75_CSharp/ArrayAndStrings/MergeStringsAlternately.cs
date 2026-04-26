@@ -11,30 +11,27 @@ public class MergeStringsAlternately
         word2 ??= string.Empty;
         var word1Length = word1.Length;
         var word2Length = word2.Length;
-        var w1Count = 0;
-        var w2Count = 0;
+        var maxLength = Math.Max(word1Length, word2Length);
         wordsJoined.Capacity = word1Length + word2Length;
         
-        if (word1Length == 0 && word2Length == 0) return "";
-
-        while ((w1Count <= word1Length - 1) && (w2Count <= word2Length - 1))
+        for (var i = 0; i < maxLength; i++)
         {
-            wordsJoined.Append(word1[w1Count]);
-            wordsJoined.Append(word2[w2Count]);
-            w1Count++;
-            w2Count++;
-        }
-
-        while ((w1Count <= word1Length - 1) && (w2Count == word2Length))
-        {
-            wordsJoined.Append(word1[w1Count]);
-            w1Count++;
-        }
-
-        while ((w2Count <= word2Length - 1) && (w1Count == word1Length))
-        {
-            wordsJoined.Append(word2[w2Count]);
-            w2Count++;
+            if ((i < word1Length) && (i < word2Length))
+            {
+                wordsJoined.Append(word1[i]);
+                wordsJoined.Append(word2[i]);
+            }
+            else
+            {
+                if (i < word1Length)
+                {
+                    return wordsJoined.Append(word1, i, word1Length - i).ToString();
+                }
+                else if (i < word2Length)
+                {
+                    return wordsJoined.Append(word2, i, word2Length - i).ToString();
+                }
+            }   
         }
 
         return wordsJoined.ToString();
