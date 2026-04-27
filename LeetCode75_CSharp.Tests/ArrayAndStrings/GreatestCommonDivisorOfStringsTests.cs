@@ -8,6 +8,7 @@ public class GreatestCommonDivisorOfStringsTests
     [InlineData("TEST", "ABC")]
     [InlineData("LEET", "CODE")]
     [InlineData("AAAAAB", "AAA")]
+    [InlineData("ABC", "TEST")]
     public void ShouldReturnEmptyString_WhenStr2DoesNotDivideStr1(string str1, string str2)
     {
         var sb = new GreatestCommonDivisorOfStrings();
@@ -21,6 +22,7 @@ public class GreatestCommonDivisorOfStringsTests
     [InlineData("ABCABCABC", "ABC", "ABC")]
     [InlineData("ABABAB", "ABAB", "AB")]
     [InlineData("ABC", "ABCABC", "ABC")]
+    [InlineData("ABC", "ABC", "ABC")]
     public void ShouldReturnGcd_WhenStr2DividesStr1(string str1, string str2, string expected)
     {
         var sb = new GreatestCommonDivisorOfStrings();
